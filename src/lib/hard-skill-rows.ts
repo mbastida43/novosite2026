@@ -1,0 +1,4 @@
+export const hardSkillRows = [
+  ['Linux', 'Debian', 'Red Hat', 'Slackware', 'Kali Linux', 'Fedora', 'Ubuntu', 'Linux Mint', 'Alpine Linux', 'CentOS', 'VMware', 'Citrix', 'Git', 'Selenium', 'Docker', 'Kubernetes', 'OpenShift', 'Vagrant', 'Terraform', 'Helm', 'Prometheus', 'Grafana', 'ChatGPT', 'ChatGPTi', 'Gemini', 'GitHub Copilot'],
+  ['Windows', 'Windows Server', 'PowerShell', 'Chef', 'Ansible', 'Puppet', 'GitHub Actions', 'Jenkins', 'Argo CD', 'JFrog', 'Docker', 'Python', 'NGINX', 'Apache Tomcat', 'Postman', 'Slack', 'Discord', 'Confluence', 'Jira', 'Trello', 'AWS', 'Microsoft Azure', 'Google Cloud', 'Heroku', 'GitLab', 'Bitbucket', 'GitHub', 'Claude', 'Grok'],
+] as const

@@ -1,0 +1,18 @@
+# Site Marlon Bastida
+- [x] Adicionar artigo K3D do PDF em PT/EN, com 25 prints dos sistemas e sem logo DevOps; leitura, imagens, idiomas e celular verificados.
+- [x] Traduzir o primeiro artigo completo para português no seletor PT, preservando o original no EN; troca de idioma, recarga, metadados e testes verificados.
+- [x] Mover o título "Portfolio" e o curso para a página /portfolio aberta pelo menu; curso renomeado para "Curso Introdutório de Redes" com botão "Assista" no padrão dos demais (PT/EN), página principal sem o título.
+- [x] Adicionar curso de rede para iniciantes com link fornecido e botão no padrão dos downloads; menu uniforme, PT/EN e celular verificados.
+- [x] Configurar MCP público para consultas ao portfólio e ferramentas de navegador sem ações de envio; catálogo extraído, três consultas verificadas e navegação bilíngue preservada. Republicação necessária para atualizar a versão pública.
+- [x] Tornar obrigatórios os campos de contato, repetir destaque vermelho em ciclos de três segundos e verificar a correção dos erros.
+- [x] Complementar hard skills com Gemini (sem duplicar), ChatGPTi na primeira faixa e Claude/Grok na segunda; orientar configuração do envio direto.
+- [x] Adicionar e verificar duas faixas de hard skills extraídas das imagens, em sentidos opostos e nas versões PT/EN.
+- [x] Adicionar chave PT/EN no menu e traduzir todo o portfólio para inglês; verificar troca de idioma e formulário.
+- [x] Substituir a imagem inicial pelo diagrama DevSecOps fornecido, adaptado à paleta marrom do menu.
+- [x] Criar identidade visual e portfólio com os dez princípios DevOps.
+- [x] Preparar formulário com validação e alternativa pelo aplicativo de e-mail, com destinatário e cópia solicitados.
+- [x] Adicionar "Artigos" ao menu (PT/EN) com página própria em /artigos, bilíngue e com o mesmo cabeçalho e rodapé.
+- [x] Adicionar o primeiro artigo completo em /artigos com o texto enviado, título e corpo seguindo as referências, sem propaganda; leitura, links e celular verificados, preservando o original em inglês.
+- [ ] Verificar envio real de contato — notify.marlonbastida.tech configurado; envio preparado, aguardando verificação DNS.
+- [ ] Adicionar download do currículo — o usuário vai enviar o PDF; até lá o botão fica no lugar, sem mensagem e sem ação. "Baixar Métricas" e "Download Metrics" já baixam o mesmo documento enviado em 14/10 (1.906.685 bytes), verificado byte a byte, sem qualquer aviso pedindo solicitação pelo contato ou formulário.
+- [x] Verificar página inicial, navegação, dez cartões, ausência de erros e ausência de rolagem horizontal no celular.

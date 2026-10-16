@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "sdk_version": "3.0.5",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "marlonbastida",
+      "version": "1.0.0",
+      "title": "marlonbastida"
+    },
+    "tools": [
+      {
+        "name": "get_profile",
+        "title": "Consultar perfil de Marlon Bastida",
+        "description": "Read Marlon Bastida’s public biography, areas of expertise and public professional links in Portuguese or English.",
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "language": {
+              "type": "string",
+              "enum": [
+                "pt",
+                "en"
+              ],
+              "default": "pt",
+              "description": "Language for the public portfolio content."
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_hard_skills",
+        "title": "Listar competências técnicas",
+        "description": "List the tool names in the two public hard-skills rows, without inferring proficiency or certifications.",
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_devops_principles",
+        "title": "Consultar princípios DevOps",
+        "description": "Read the ten DevOps principles published on the portfolio, preserving their original-wording attribution.",
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "language": {
+              "type": "string",
+              "enum": [
+                "pt",
+                "en"
+              ],
+              "default": "pt",
+              "description": "Language for the principles and attribution."
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
