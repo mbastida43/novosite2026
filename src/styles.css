@@ -107,6 +107,7 @@
 .hero-role { font-size: 26px; font-weight: 450; color: var(--warm-muted); margin: 0; }
 .hero-description { max-width: 440px; font-size: 16px; line-height: 1.95; color: var(--warm-muted); margin: 25px 0 29px; }
 .hero-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.hero-actions-second { margin-top: 12px; }
 .page-title { font-size: 30px; line-height: 1.3; font-weight: 650; color: var(--foreground); margin: 0 0 22px; }
 .portfolio-course { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; margin-top: 28px; max-width: 560px; }
 .portfolio-course h2 { font-size: 18px; line-height: 1.5; font-weight: 650; margin: 0; }
@@ -150,11 +151,12 @@
 .contact-email svg { width: 16px; flex-shrink: 0; }
 .contact-form { display: grid; gap: 17px; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.field { display: grid; gap: 8px; font-size: 13px; font-weight: 600; }
+.field { display: grid; gap: 8px; align-content: start; min-width: 0; font-size: 13px; font-weight: 600; }
 .field input, .field textarea { width: 100%; border: 1px solid var(--input); border-radius: var(--radius-input); background: var(--warm-surface); color: var(--foreground); padding: 13px 15px; font-size: 14px; font-weight: 400; min-width: 0; }
 .field textarea { resize: vertical; min-height: 118px; }
 .field [aria-invalid="true"] { animation: contact-error-border 3s linear infinite; }
 .field-error { color: var(--destructive); font-size: 12px; font-weight: 500; line-height: 1.6; }
+.field-error-hidden { visibility: hidden; }
 @keyframes contact-error-border {
   0%, 33.33%, 66.66%, 100% { border-color: var(--destructive); }
   16.66%, 50%, 83.33% { border-color: var(--input); }

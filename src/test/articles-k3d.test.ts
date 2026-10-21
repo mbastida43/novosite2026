@@ -13,4 +13,16 @@ describe('K3D PDF article', () => {
     expect(new Set(ptImages?.map(image => image.url)).size).toBe(25)
     expect(ptImages?.[0]?.url).toBe(firstSystemScreenshot.url)
   })
+
+  it('spells the Visual Studio Code heading correctly in both languages', () => {
+    const pt = articlesByLanguage.pt.find(article => article.slug === 'kubernetes-k3d-windows-wsl')
+    const en = articlesByLanguage.en.find(article => article.slug === 'kubernetes-k3d-windows-wsl')
+    const ptHeadings = pt?.blocks.filter(block => block.type === 'heading').map(block => block.text)
+    const enHeadings = en?.blocks.filter(block => block.type === 'heading').map(block => block.text)
+    expect(ptHeadings).toContain('Instalar o Visual Studio Code')
+    expect(enHeadings).toContain('Installing Visual Studio Code')
+    for (const heading of [...(ptHeadings ?? []), ...(enHeadings ?? [])]) {
+      expect(heading).not.toMatch(/Visulal|Studo/i)
+    }
+  })
 })

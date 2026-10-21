@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { useState, useRef, type FormEvent } from 'react'
 import { useServerFn } from '@tanstack/react-start'
 import { submitContact } from '@/lib/contact.functions'
-import { ArrowUpRight, ArrowRight, Download, Github, Linkedin, Users, HeartHandshake, Rocket, BookOpen, Workflow, Activity, MessageSquare, ShieldCheck, TrendingUp, Network, Mail, Code2, Terminal, Cloud, LockKeyhole, GitBranch } from 'lucide-react'
+import { ArrowUpRight, ArrowRight, Download, Github, Linkedin, Instagram, Users, HeartHandshake, Rocket, BookOpen, Workflow, Activity, MessageSquare, ShieldCheck, TrendingUp, Network, Mail, Code2, Terminal, Cloud, LockKeyhole, GitBranch } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import devsecopsDiagram from '@/assets/devsecops-diagram-transparent.png'
 import metricsPt from '@/assets/METRICAS.pdf.asset.json'
@@ -77,7 +77,7 @@ function Index() {
       const field = result.error.issues[0]?.path[0]
       if (typeof field === 'string') {
         const input = event.currentTarget.elements.namedItem(field)
-        if (input instanceof HTMLInputElement || input instanceof HTMLTextAreaElement) input.focus()
+        if (input instanceof HTMLInputElement || input instanceof HTMLTextAreaElement) input.focus({ preventScroll: true })
       }
       return
     }
@@ -117,6 +117,9 @@ function Index() {
               <Button variant="warm" className="press-button" asChild><a href="https://github.com/mbastida43/" target="_blank" rel="noopener noreferrer"><Github /> GitHub <ArrowUpRight /></a></Button>
               <Button variant="warm" className="press-button" asChild><a href="https://www.linkedin.com/in/mbastida/" target="_blank" rel="noopener noreferrer"><Linkedin /> LinkedIn <ArrowUpRight /></a></Button>
             </div>
+            <div className="hero-actions hero-actions-second">
+              <Button variant="warm" className="press-button" asChild><a href="https://www.instagram.com/marlon.bas/" target="_blank" rel="noopener noreferrer"><Instagram /> Instagram <ArrowUpRight /></a></Button>
+            </div>
           </div>
         </section>
         <div className="site-container">
@@ -153,8 +156,8 @@ function Index() {
             <div className="contact-layout">
               <div className="contact-copy"><span className="section-index">{copy.contactIndex}</span><h2 id="contact-title">{copy.contactTitle}<br />{copy.contactTitleSecond}</h2><p>{copy.contactDescription}</p><a className="contact-email" href="mailto:contato@marlonbastida.tech"><Mail /> contato@marlonbastida.tech <ArrowUpRight size={13} /></a></div>
               <form className="contact-form" noValidate onSubmit={handleContact} onInput={event => { submissionId.current = null; setSendError(''); if (contactAttempted) { checkContact(event.currentTarget); setContactNotice(false) } }}>
-                <div className="form-row"><label className="field">{copy.nameLabel}<input name="name" placeholder={copy.namePlaceholder} required maxLength={100} autoComplete="name" aria-invalid={contactErrors.name || undefined} aria-describedby={contactErrors.name ? 'contact-name-error' : undefined} />{contactErrors.name && <span className="field-error" id="contact-name-error">{copy.contactErrors.name}</span>}</label><label className="field">{copy.emailLabel}<input name="email" type="email" placeholder={copy.emailPlaceholder} required maxLength={254} autoComplete="email" aria-invalid={contactErrors.email || undefined} aria-describedby={contactErrors.email ? 'contact-email-error' : undefined} />{contactErrors.email && <span className="field-error" id="contact-email-error">{copy.contactErrors.email}</span>}</label></div>
-                <label className="field">{copy.messageLabel}<textarea name="message" placeholder={copy.messagePlaceholder} required minLength={10} maxLength={5000} aria-invalid={contactErrors.message || undefined} aria-describedby={contactErrors.message ? 'contact-message-error' : undefined} />{contactErrors.message && <span className="field-error" id="contact-message-error">{copy.contactErrors.message}</span>}</label>
+                <div className="form-row"><label className="field">{copy.nameLabel}<input name="name" placeholder={copy.namePlaceholder} required maxLength={100} autoComplete="name" aria-invalid={contactErrors.name || undefined} aria-describedby={contactErrors.name ? 'contact-name-error' : undefined} /><span className={`field-error${contactErrors.name ? '' : ' field-error-hidden'}`} id="contact-name-error" aria-live="polite" aria-hidden={!contactErrors.name}>{copy.contactErrors.name}</span></label><label className="field">{copy.emailLabel}<input name="email" type="email" placeholder={copy.emailPlaceholder} required maxLength={254} autoComplete="email" aria-invalid={contactErrors.email || undefined} aria-describedby={contactErrors.email ? 'contact-email-error' : undefined} /><span className={`field-error${contactErrors.email ? '' : ' field-error-hidden'}`} id="contact-email-error" aria-live="polite" aria-hidden={!contactErrors.email}>{copy.contactErrors.email}</span></label></div>
+                <label className="field">{copy.messageLabel}<textarea name="message" placeholder={copy.messagePlaceholder} required minLength={10} maxLength={5000} aria-invalid={contactErrors.message || undefined} aria-describedby={contactErrors.message ? 'contact-message-error' : undefined} /><span className={`field-error${contactErrors.message ? '' : ' field-error-hidden'}`} id="contact-message-error" aria-live="polite" aria-hidden={!contactErrors.message}>{copy.contactErrors.message}</span></label>
                 <div className="form-bottom"><p className="form-note">{copy.formNote}</p><Button variant="warm" type="submit" disabled={sending} className={contactNotice ? 'contact-send-success' : undefined}>{sending ? copy.sending : copy.submit} <ArrowRight /></Button></div>
                 {sendError && <p className="field-error" role="alert">{sendError}</p>}
                 {contactNotice && <p className="form-note" role="status">{copy.contactNotice}</p>}

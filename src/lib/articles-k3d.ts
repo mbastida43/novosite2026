@@ -45,7 +45,7 @@ export const k3dArticlePt: Article = {
   { type: "code", code: "winget install -e --id Microsoft.WindowsTerminal" },
   { type: "image", url: image45.url, alt: "winget instalação do Windows Terminal", caption: "winget instalação do Windows Terminal" },
   { type: "code", code: "choco install microsoft-windows-terminal" },
-  { type: "heading", text: "Instalar o Visulal Studo Code" },
+  { type: "heading", text: "Instalar o Visual Studio Code" },
   { type: "paragraph", text: "Conhecido por vscode (editor Microsoft) instalar pelo executável, ou numa aba Powershell pelo winget (default package manager) ou chocolatey:" },
   { type: "image", url: image48.url, alt: "Winget Visual Studio Code", caption: "Winget Visual Studio Code" },
   { type: "code", code: "winget install -e --id Microsoft.VisualStudioCode" },

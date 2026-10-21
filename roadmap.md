@@ -1,4 +1,5 @@
 # Site Marlon Bastida
+- [x] Corrigir em Artigos o título "Instalar o Visual Studio Code" no artigo K3D (PT) e conferir a versão em inglês; teste de ortografia e leitura nas duas línguas verificados.
 - [x] Adicionar artigo K3D do PDF em PT/EN, com 25 prints dos sistemas e sem logo DevOps; leitura, imagens, idiomas e celular verificados.
 - [x] Traduzir o primeiro artigo completo para português no seletor PT, preservando o original no EN; troca de idioma, recarga, metadados e testes verificados.
 - [x] Mover o título "Portfolio" e o curso para a página /portfolio aberta pelo menu; curso renomeado para "Curso Introdutório de Redes" com botão "Assista" no padrão dos demais (PT/EN), página principal sem o título.

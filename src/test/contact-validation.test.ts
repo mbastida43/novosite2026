@@ -1,12 +1,20 @@
 import { describe, expect, it } from 'vitest'
-import { validateContact } from '@/lib/contact-validation'
+import { contactSchema, validateContact } from '@/lib/contact-validation'
 import { hardSkillRows } from '@/components/hard-skills'
 
 describe('Contact validation', () => {
+  it.each(['&*()%$##@$@#$!@$@', 'Marlon&', 'Marlon123', 'Marlon_Bastida', 'Marlon😀'])('rejects symbols and numbers in the name: %s', name => {
+    const input = { name, email: 'visitor@example.com', message: 'Hello Marlon!' }
+    expect(validateContact(input).success).toBe(false)
+    expect(() => contactSchema.parse(input)).toThrow()
+  })
+  it.each(['Marlon Bastida', 'João da Conceição', 'Jose\u0301 Silva'])('accepts letters, accents and spaces in the name: %s', name => {
+    expect(validateContact({ name, email: 'visitor@example.com', message: 'Hello Marlon!' }).success).toBe(true)
+  })
   it('requires every field including non-whitespace text', () => {
     const result = validateContact({ name: '   ', email: '', message: '   ' })
     expect(result.success).toBe(false)
-    if (!result.success) expect(result.error.issues.map(issue => issue.path[0])).toEqual(['name', 'email', 'message'])
+    if (!result.success) expect([...new Set(result.error.issues.map(issue => issue.path[0]))]).toEqual(['name', 'email', 'message'])
   })
   it('rejects incomplete email addresses and short messages', () => {
     expect(validateContact({ name: 'Visitor', email: 'visitor@', message: 'Hello there!' }).success).toBe(false)

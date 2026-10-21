@@ -35,5 +35,7 @@ describe('Bilingual portfolio copy', () => {
       expect(copy.quote.endsWith('."')).toBe(true)
     }
     expect(portfolioCopy.en.submit).toBe('Send message')
+    expect(portfolioCopy.pt.hardSkills.title).toBe('Competências Técnicas')
+    expect(portfolioCopy.en.hardSkills.title).toBe('Hard skills')
   })
 })
