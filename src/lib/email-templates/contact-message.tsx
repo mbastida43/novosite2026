@@ -19,6 +19,6 @@ export const template = {
   component: ContactMessage,
   subject: 'Nova mensagem pelo site — Marlon Bastida',
   displayName: 'Contato do portfólio',
-  to: 'contato@marlonbastida.tech',
+  to: 'contactme@marlonbastida.com.br',
   previewData: { name: 'Visitante', email: 'visitante@example.com', message: 'Gostaria de conversar sobre um projeto DevOps.' },
 } satisfies TemplateEntry

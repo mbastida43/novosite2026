@@ -6,6 +6,7 @@ import { SiteFooter } from '@/components/site-footer'
 import { portfolioCopy, type Language } from '@/lib/portfolio-copy'
 
 const COURSE_URL = 'https://www.youtube.com/watch?v=grFAejuwhco&list=PLq0m0pvXczJqSOWdMOT9ob4pL4jPIDYUe'
+const APP_URL = 'https://github.com/mbastida43/gmailcleanerbuddyapp'
 
 export const Route = createFileRoute('/portfolio')({
   validateSearch: (search: Record<string, unknown>): { lang: Language } => ({ lang: search['lang'] === 'en' ? 'en' : 'pt' }),
@@ -44,6 +45,18 @@ function Portfolio() {
                 <a href={COURSE_URL} target="_blank" rel="noopener noreferrer">{copy.courseWatch} <ArrowUpRight /></a>
               </Button>
             </div>
+            <div className="portfolio-course">
+              <h2>{copy.appTitle}</h2>
+              <Button variant="warm" className="press-button" asChild>
+                <a href={APP_URL} target="_blank" rel="noopener noreferrer">{copy.appGithub} <ArrowUpRight /></a>
+              </Button>
+            </div>
+            {copy.books.map((book) => <div key={book.url} className="portfolio-course portfolio-book">
+              <h2>{book.title}</h2>
+              <Button variant="warm" className="press-button" asChild>
+                <a href={book.url} target="_blank" rel="noopener noreferrer">{copy.buyAmazon} <ArrowUpRight /></a>
+              </Button>
+            </div>)}
           </section>
         </div>
       </main>

@@ -7,7 +7,10 @@ import { Button } from '@/components/ui/button'
 import devsecopsDiagram from '@/assets/devsecops-diagram-transparent.png'
 import metricsPt from '@/assets/METRICAS.pdf.asset.json'
 import metricsEn from '@/assets/METRICS.pdf.asset.json'
+import resumePt from '@/assets/CV_Marlon_Bastida_DevOps_Cloud_2026_BR.pdf.asset.json'
+import resumeEn from '@/assets/CV_Marlon_Bastida_DevOps_Cloud_2026_EN.pdf.asset.json'
 import { portfolioCopy, type Language } from '@/lib/portfolio-copy'
+import { partners, type Partner } from '@/lib/partners'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { HardSkills } from '@/components/hard-skills'
@@ -112,12 +115,12 @@ function Index() {
             <p className="hero-role">DevSecOps Engineer</p>
             <p className="hero-description">{copy.heroLead}<br />{copy.heroDescription}</p>
             <div className="hero-actions">
-              <Button variant="warm" className="press-button"><Download /> {copy.resume}</Button>
+              <Button variant="warm" className="press-button" asChild><a href={(lang === 'en' ? resumeEn : resumePt).url} download={lang === 'en' ? 'CV_Marlon_Bastida_DevOps_Cloud_2026_EN.pdf' : 'CV_Marlon_Bastida_DevOps_Cloud_2026_BR.pdf'}><Download /> {copy.resume}</a></Button>
               <Button variant="warm" className="press-button" asChild><a href={(lang === 'en' ? metricsEn : metricsPt).url} download={lang === 'en' ? 'METRICS.pdf' : 'METRICAS.pdf'}><TrendingUp /> {copy.metrics}</a></Button>
               <Button variant="warm" className="press-button" asChild><a href="https://github.com/mbastida43/" target="_blank" rel="noopener noreferrer"><Github /> GitHub <ArrowUpRight /></a></Button>
-              <Button variant="warm" className="press-button" asChild><a href="https://www.linkedin.com/in/mbastida/" target="_blank" rel="noopener noreferrer"><Linkedin /> LinkedIn <ArrowUpRight /></a></Button>
             </div>
             <div className="hero-actions hero-actions-second">
+              <Button variant="warm" className="press-button" asChild><a href="https://www.linkedin.com/in/mbastida/" target="_blank" rel="noopener noreferrer"><Linkedin /> LinkedIn <ArrowUpRight /></a></Button>
               <Button variant="warm" className="press-button" asChild><a href="https://www.instagram.com/marlon.bas/" target="_blank" rel="noopener noreferrer"><Instagram /> Instagram <ArrowUpRight /></a></Button>
             </div>
           </div>
@@ -125,7 +128,7 @@ function Index() {
         <div className="site-container">
           <section className="content-section" id="sobre" aria-labelledby="about-title">
             <div className="section-heading">
-              <div><span className="section-index">{copy.aboutIndex}</span><h2 id="about-title">{copy.aboutTitle}</h2></div>
+              <div><span className="section-index">{copy.aboutIndex}</span><h2 id="about-title" className="shimmer-sweep">{copy.aboutTitle}</h2></div>
             </div>
             <div className="about-copy">
               <div className="about-text">
@@ -139,7 +142,7 @@ function Index() {
           </section>
           <section className="content-section" id="cultura" aria-labelledby="culture-title">
             <div className="section-heading">
-              <div><span className="section-index">{copy.cultureIndex}</span><h2 id="culture-title">{copy.cultureTitle}</h2></div>
+              <div><span className="section-index">{copy.cultureIndex}</span><h2 id="culture-title" className="shimmer-sweep">{copy.cultureTitle}</h2></div>
               <p>{copy.cultureLead}<br />{copy.cultureDescription}</p>
             </div>
             <div className="culture-grid">
@@ -152,13 +155,28 @@ function Index() {
             <p className="culture-note">{copy.cultureNote}</p>
           </section>
           <HardSkills lang={lang} />
+          <section className="content-section" id="parceiros" aria-labelledby="partners-title">
+            <span className="section-index">{copy.partners.index}</span>
+            <p id="partners-title" className="partners-subtitle shimmer-sweep">{copy.partners.subtitle}</p>
+            <div className="partners-marquee">
+              <div className="partners-track">
+                {[false, true].map(duplicate => <ul className="partners-grid" key={String(duplicate)} aria-hidden={duplicate || undefined}>
+                  {partners.map((partner, index) => <li key={`${String(duplicate)}-${index}`} className="partner-card">
+                    <div className="partner-photo" role={partner.photo ? undefined : 'img'} aria-label={partner.photo ? undefined : (partner.name ?? copy.partners.photo)}>{partner.photo ? <img src={partner.photo} alt={partner.name ?? copy.partners.photo} loading="lazy" style={partner.photoPosition ? { objectPosition: partner.photoPosition } : undefined} /> : <Users />}</div>
+                    <PartnerName partner={partner} lang={lang} duplicate={duplicate} placeholder={copy.partners.name} />
+                    {partner.url ? <Button asChild variant="warm" className="press-button partner-button"><a href={partner.url} target="_blank" rel="noreferrer noopener" tabIndex={duplicate ? -1 : undefined}><Linkedin /> LinkedIn</a></Button> : <Button variant="warm" className="press-button partner-button" type="button" tabIndex={duplicate ? -1 : undefined}><Linkedin /> LinkedIn</Button>}
+                  </li>)}
+                </ul>)}
+              </div>
+            </div>
+          </section>
           <section className="contact-section" id="contato" aria-labelledby="contact-title">
             <div className="contact-layout">
-              <div className="contact-copy"><span className="section-index">{copy.contactIndex}</span><h2 id="contact-title">{copy.contactTitle}<br />{copy.contactTitleSecond}</h2><p>{copy.contactDescription}</p><a className="contact-email" href="mailto:contato@marlonbastida.tech"><Mail /> contato@marlonbastida.tech <ArrowUpRight size={13} /></a></div>
+              <div className="contact-copy"><span className="section-index">{copy.contactIndex}</span><h2 id="contact-title" className="shimmer-sweep">{copy.contactTitle}<br />{copy.contactTitleSecond}</h2><p>{copy.contactDescription}</p><a className="contact-email" href="mailto:contactme@marlonbastida.com.br"><Mail /> contactme@marlonbastida.com.br <ArrowUpRight size={13} /></a></div>
               <form className="contact-form" noValidate onSubmit={handleContact} onInput={event => { submissionId.current = null; setSendError(''); if (contactAttempted) { checkContact(event.currentTarget); setContactNotice(false) } }}>
                 <div className="form-row"><label className="field">{copy.nameLabel}<input name="name" placeholder={copy.namePlaceholder} required maxLength={100} autoComplete="name" aria-invalid={contactErrors.name || undefined} aria-describedby={contactErrors.name ? 'contact-name-error' : undefined} /><span className={`field-error${contactErrors.name ? '' : ' field-error-hidden'}`} id="contact-name-error" aria-live="polite" aria-hidden={!contactErrors.name}>{copy.contactErrors.name}</span></label><label className="field">{copy.emailLabel}<input name="email" type="email" placeholder={copy.emailPlaceholder} required maxLength={254} autoComplete="email" aria-invalid={contactErrors.email || undefined} aria-describedby={contactErrors.email ? 'contact-email-error' : undefined} /><span className={`field-error${contactErrors.email ? '' : ' field-error-hidden'}`} id="contact-email-error" aria-live="polite" aria-hidden={!contactErrors.email}>{copy.contactErrors.email}</span></label></div>
                 <label className="field">{copy.messageLabel}<textarea name="message" placeholder={copy.messagePlaceholder} required minLength={10} maxLength={5000} aria-invalid={contactErrors.message || undefined} aria-describedby={contactErrors.message ? 'contact-message-error' : undefined} /><span className={`field-error${contactErrors.message ? '' : ' field-error-hidden'}`} id="contact-message-error" aria-live="polite" aria-hidden={!contactErrors.message}>{copy.contactErrors.message}</span></label>
-                <div className="form-bottom"><p className="form-note">{copy.formNote}</p><Button variant="warm" type="submit" disabled={sending} className={contactNotice ? 'contact-send-success' : undefined}>{sending ? copy.sending : copy.submit} <ArrowRight /></Button></div>
+                <div className="form-bottom"><p className="form-note">{copy.formNote}</p><Button variant="warm" type="submit" disabled={sending} className={`contact-send-shake${contactNotice ? ' contact-send-success' : ''}`}>{sending ? copy.sending : copy.submit} <ArrowRight /></Button></div>
                 {sendError && <p className="field-error" role="alert">{sendError}</p>}
                 {contactNotice && <p className="form-note" role="status">{copy.contactNotice}</p>}
               </form>
@@ -169,4 +187,12 @@ function Index() {
       <SiteFooter lang={lang} />
     </>
   )
+}
+
+/** Partner name plate: a link to the partner's portfolio when one is set, plain text otherwise. */
+function PartnerName({ partner, lang, duplicate, placeholder }: { partner: Partner; lang: Language; duplicate: boolean; placeholder: string }) {
+  const content = <>{partner.name ? <span className="shimmer-sweep">{partner.name}</span> : placeholder}{partner.role ? <span className="partner-role">{lang === 'en' ? partner.role.en : partner.role.pt}</span> : null}</>
+  const className = 'warm-button partner-button partner-name'
+  const tabIndex = duplicate ? -1 : undefined
+  return partner.portfolio ? <a className={className} href={partner.portfolio} target="_blank" rel="noreferrer noopener" tabIndex={tabIndex}>{content}</a> : <p className={className} tabIndex={tabIndex}>{content}</p>
 }

@@ -9,6 +9,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
+        navigation: "navigation-button",
         warm: "warm-button",
         quiet: "quiet-button",
         default: "bg-primary text-primary-foreground shadow hover:bg-primary/90",

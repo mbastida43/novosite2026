@@ -7,7 +7,7 @@ export const submitContact = createServerFn({ method: 'POST' })
   .handler(async ({ data }) => {
     const { sendTemplateEmail } = await import('./email-templates/send-email')
     try {
-      const result = await sendTemplateEmail('contact-message', 'contato@marlonbastida.tech', {
+      const result = await sendTemplateEmail('contact-message', 'contactme@marlonbastida.com.br', {
         templateData: { name: data.name, email: data.email, message: data.message },
         cc: ['marlon.bastida@gmail.com'],
         replyTo: data.email,

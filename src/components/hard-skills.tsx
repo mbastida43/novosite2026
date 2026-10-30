@@ -20,7 +20,7 @@ export function HardSkills({ lang }: { lang: Language }) {
   return (
     <section className="content-section hard-skills-section" id="hard-skills" aria-labelledby="hard-skills-title">
       <div className="section-heading">
-        <div><span className="section-index">{copy.index}</span><h2 id="hard-skills-title">{copy.title}</h2></div>
+        <div><span className="section-index">{copy.index}</span><h2 id="hard-skills-title" className="shimmer-sweep">{copy.title}</h2></div>
         <Button variant="quiet" size="icon" className="skills-motion-control" onClick={() => setPaused(value => !value)} aria-label={paused ? copy.resume : copy.pause} title={paused ? copy.resume : copy.pause} aria-pressed={paused}>
           {paused ? <Play aria-hidden="true" /> : <Pause aria-hidden="true" />}
         </Button>

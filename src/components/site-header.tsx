@@ -18,7 +18,7 @@ export function SiteHeader({ lang, current, onLanguageChange }: SiteHeaderProps)
     description: 'Read the current portfolio language and the menu destinations available on this page.',
     annotations: { readOnlyHint: true },
     execute: () => runWebMCPTool('read_site_navigation', () =>
-      `${lang}: ${copy.aboutLink} (/#sobre), ${copy.cultureLink} (/#cultura), ${copy.articlesLink} (/artigos), ${copy.portfolioLink} (/portfolio), ${copy.contactLink} (/#contato).`),
+      `${lang}: ${copy.aboutLink} (/#sobre), ${copy.cultureLink} (/#cultura), ${copy.articlesLink} (/artigos), ${copy.portfolioLink} (/portfolio), ${copy.partnersLink} (/#parceiros), ${copy.contactLink} (/#contato).`),
   })
   return (
     <header className="site-header-bar">
@@ -27,11 +27,12 @@ export function SiteHeader({ lang, current, onLanguageChange }: SiteHeaderProps)
           <span className="brand-mark">MB.</span>Marlon Bastida<span className="text-muted-foreground">/</span>
         </Link>
         <nav className="header-nav" aria-label={copy.navigation}>
-          <Link className="desktop-link" to="/" hash="sobre" search={{ lang }}>{copy.aboutLink}</Link>
-          <Link className="culture-link" to="/" hash="cultura" search={{ lang }}>{copy.cultureLink}</Link>
-          <Link className="articles-link" to="/artigos" search={{ lang }}>{copy.articlesLink}</Link>
-          <Link className="portfolio-link" to="/portfolio" search={{ lang }} target="_blank" rel="noopener noreferrer">{copy.portfolioLink}</Link>
-          <Link className="nav-contact" to="/" hash="contato" search={{ lang }}>{copy.contactLink} <ArrowUpRight size={14} /></Link>
+          <Button asChild variant="navigation"><Link className="desktop-link" to="/" hash="sobre" search={{ lang }}>{copy.aboutLink}</Link></Button>
+          <Button asChild variant="navigation"><Link className="culture-link" to="/" hash="cultura" search={{ lang }}>{copy.cultureLink}</Link></Button>
+          <Button asChild variant="navigation"><Link className="articles-link" to="/artigos" search={{ lang }}>{copy.articlesLink}</Link></Button>
+          <Button asChild variant="navigation"><Link className="portfolio-link" to="/portfolio" search={{ lang }} target="_blank" rel="noopener noreferrer">{copy.portfolioLink}</Link></Button>
+          <Button asChild variant="navigation"><Link className="partners-link" to="/" hash="parceiros" search={{ lang }}>{copy.partnersLink}</Link></Button>
+          <Button asChild variant="navigation"><Link className="nav-contact" to="/" hash="contato" search={{ lang }}>{copy.contactLink} <ArrowUpRight size={14} /></Link></Button>
           <div className="language-switch" data-language={lang} role="group" aria-label={copy.languageLabel}>
             <span className="language-thumb" aria-hidden="true" />
             <Button variant="ghost" className="language-option" aria-label="Português" aria-pressed={lang === 'pt'} onClick={() => onLanguageChange('pt')}>PT</Button>

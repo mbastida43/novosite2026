@@ -1,6 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { DonateButtons } from '@/components/donate-buttons'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
+import { CodeBlock } from '@/components/code-block'
 import { portfolioCopy, type Language } from '@/lib/portfolio-copy'
 import { articlesByLanguage } from '@/lib/articles'
 
@@ -49,7 +51,7 @@ function Artigos() {
                     {article.blocks.map((block, index) => {
                       if (block.type === 'image') return <figure key={index} className="article-figure"><a href={block.url} target="_blank" rel="noopener noreferrer"><img src={block.url} alt={block.alt} loading="lazy" decoding="async" /></a><figcaption>{block.caption}</figcaption></figure>
                       if (block.type === 'heading') return <h2 key={index} className="article-subheading">{block.text}</h2>
-                      if (block.type === 'code') return <pre key={index} className="article-code"><code>{block.code}</code></pre>
+                      if (block.type === 'code') return <CodeBlock key={index} code={block.code} copyLabel={page.copyCode} copiedLabel={page.copiedCode} />
                       if (block.type === 'list') return <ul key={index}>{block.items.map((item) => <li key={item}>{item}</li>)}</ul>
                       if (block.type === 'link') return <p key={index}>{block.text}: <a href={block.url} target="_blank" rel="noopener noreferrer">{block.url}</a></p>
                       return <p key={index}>{block.text}</p>
@@ -58,7 +60,14 @@ function Artigos() {
                 </article>
               ))}
             </div>
+            <div className="article-end">
+              <hr className="article-end-rule" />
+              <p className="article-end-note">{page.contribute}</p>
+              <DonateButtons labels={page.donate} />
+
+            </div>
           </section>
+
         </div>
       </main>
       <SiteFooter lang={lang} />
